@@ -9,6 +9,6 @@ namespace BirthClinicPlanning
 {
     public class Clinicians : Employee
     {
-
+        public string Position { get; set; }
     }
 }

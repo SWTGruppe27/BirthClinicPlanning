@@ -10,5 +10,6 @@ namespace BirthClinicPlanning
     public class Child
     {
         public int CprNumber { get; set; }
+        public Birth Birth { get; set; }
     }
 }

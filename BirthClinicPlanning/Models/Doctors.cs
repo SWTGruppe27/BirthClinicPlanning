@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 
 namespace BirthClinicPlanning
 {
-    public class Parents
+    public class Doctors : Clinicians
     {
-        public string FullNameMother { get; set; }
-        public string FullNameFather { get; set; }
     }
 }

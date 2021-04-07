@@ -3,13 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BirthClinicPlanning.Models;
 
 namespace BirthClinicPlanning
 {
-    public class Birth
+    public class Sosu : Clinicians 
     {
-        public BirthRoom BirthRoom { get; set; }
-        public List<Child> ChildList { get; set; }
     }
 }

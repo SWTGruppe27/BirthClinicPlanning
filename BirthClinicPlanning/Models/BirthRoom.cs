@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BirthClinicPlanning.Models;
 
-namespace BirthClinicPlanning
+namespace BirthClinicPlanning.Models
 {
-    public class MaternityRoom : Room
+    public class BirthRoom : Room
     {
+        public Birth Birth { get; set; }
     }
 }
