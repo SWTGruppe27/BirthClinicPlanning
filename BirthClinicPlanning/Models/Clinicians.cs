@@ -10,5 +10,7 @@ namespace BirthClinicPlanning
     public class Clinicians : Employee
     {
         public string Position { get; set; }
+        public int BirthRoomId { get; set; }
+        public BirthRoom BirthRoom { get; set; }
     }
 }

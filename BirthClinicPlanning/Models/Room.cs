@@ -9,5 +9,6 @@ namespace BirthClinicPlanning.Models
     public class Room
     {
         public int RoomNumber { get; set; }
+        public string RoomType { get; set; }
     }
 }

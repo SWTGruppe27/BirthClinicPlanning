@@ -7,7 +7,7 @@ using BirthClinicPlanning.Models;
 
 namespace BirthClinicPlanning
 {
-    public class RestRoom4Hours : Room
+    public class RestRoom4Hours : RestRoom
     {
     }
 }

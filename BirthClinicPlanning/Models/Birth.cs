@@ -9,6 +9,7 @@ namespace BirthClinicPlanning
 {
     public class Birth
     {
+        public int BirthId { get; set; }
         public BirthRoom BirthRoom { get; set; }
         public List<Child> ChildList { get; set; }
     }

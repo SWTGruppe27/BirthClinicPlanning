@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace BirthClinicPlanning.Models
 {
-    public class Parent
+    class Father : Relatives
     {
-        public string MotherFullName { get; set; }
-        public string FatherFullName { get; set; }
+        public string CPRNumber { get; set; }
     }
 }

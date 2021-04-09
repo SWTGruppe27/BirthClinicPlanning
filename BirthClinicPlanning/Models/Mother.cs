@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BirthClinicPlanning.Data
+namespace BirthClinicPlanning.Models
 {
-    public class MyDbContext
+    public class Mother : Relatives
     {
+        public string CPRNumber { get; set; }
     }
 }

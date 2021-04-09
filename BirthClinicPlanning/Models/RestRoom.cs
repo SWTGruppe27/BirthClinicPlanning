@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace BirthClinicPlanning.Models
 {
-    public class ParentChild
+    public class RestRoom : Room
     {
-        public Parent Parent { get; set; }
+        public Relatives Relatives { get; set; }
+        public string Type { get; set; }
     }
 }

@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BirthClinicPlanning.Models;
 
-namespace BirthClinicPlanning
+namespace BirthClinicPlanning.Models
 {
-    public class MaternityRoom : RestRoom
+    public class Family : Relatives
     {
 
     }
