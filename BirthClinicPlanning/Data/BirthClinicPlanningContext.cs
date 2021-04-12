@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using BirthClinicPlanning.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.SqlServer.Query.Internal;
 
 namespace BirthClinicPlanning.Data
 {
@@ -73,6 +74,27 @@ namespace BirthClinicPlanning.Data
             mb.Entity<Nurses>().ToTable("Nurses");
             mb.Entity<Sosu>().ToTable("Sosu");
 
+
+            SeedData(mb);
+        }
+        private void SeedData(ModelBuilder mb)
+        {
+            //mb.Entity<Father>().HasData(new Father {CPRNumber = "030587642", FullName = "Jens Jensen", RelativesId = 1});
+            RestRoom4Hours 
+            
+            mb.Entity<RestRoom4Hours>().HasData(new RestRoom4Hours { RoomNumber = 2 });
+            
+            mb.Entity<Mother>().HasData(new Mother {CPRNumber = "000000000", FullName = "Pia Jensen", RelativesId = 2, RestRoomId = 2});
+            mb.Entity<Child>().HasData(new Child {BirthId = 2, CprNumber = 111111});
+            
+            mb.Entity<Birth>().HasData(new Birth {BirthId = 2});
+            mb.Entity<BirthRoom>().HasData(new BirthRoom {RoomNumber = 1, BirthId = 2});
+
+            Midwifes m1 = new Midwifes("LIne Jensen");
+            m1.BirthRoomId = 2;
+            m1.EmployeeId = 2;
+            mb.Entity<Midwifes>().HasData(m1);
+            
         }
 
         public DbSet<Secretaries> Secretaries { get; set; }

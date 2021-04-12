@@ -11,12 +11,7 @@ namespace BirthClinicPlanning
     {
         public RestRoom4Hours()
         {
-
-        }
-
-        public RestRoom4Hours(string type) : base(type)
-        {
-            RoomType = "RestRoom4Hours";
+            Type = "RestRoom4Hours";
         }
     }
 }

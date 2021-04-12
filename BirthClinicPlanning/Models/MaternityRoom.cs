@@ -11,12 +11,7 @@ namespace BirthClinicPlanning
     {
         public MaternityRoom()
         {
-
-        }
-
-        public MaternityRoom(string type) : base(type)
-        {
-            RoomType = "MaternityRoom";
+            Type = "MaternityRoom";
         }
     }
 }

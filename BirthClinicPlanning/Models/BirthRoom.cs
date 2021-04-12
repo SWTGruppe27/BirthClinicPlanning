@@ -15,11 +15,6 @@ namespace BirthClinicPlanning.Models
 
         public BirthRoom()
         {
-
-        }
-
-        public BirthRoom(string type) : base(type)
-        {
             RoomType = "BirthRoom";
         }
     }

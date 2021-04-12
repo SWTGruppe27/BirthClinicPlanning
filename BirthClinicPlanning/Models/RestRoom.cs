@@ -13,11 +13,6 @@ namespace BirthClinicPlanning.Models
 
         protected RestRoom()
         {
-            
-        }
-
-        protected RestRoom(string type) : base(type)
-        {
             RoomType = "Restroom";
         }
     }

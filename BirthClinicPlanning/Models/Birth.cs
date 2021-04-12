@@ -10,6 +10,8 @@ namespace BirthClinicPlanning
     public class Birth
     {
         public int BirthId { get; set; }
+        public DateTime PlannedStartDate { get; set; }
+        public DateTime PlannedEndDate { get; set; }
         public BirthRoom BirthRoom { get; set; }
         public List<Child> ChildList { get; set; }
     }

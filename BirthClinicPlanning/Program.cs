@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection.PortableExecutable;
 using BirthClinicPlanning.Data;
 using BirthClinicPlanning.Models;
 
@@ -8,6 +9,15 @@ namespace BirthClinicPlanning
     {
         static void Main(string[] args)
         {
+
+            //BirthRoom b = new BirthRoom();
+
+            //Console.WriteLine($"{b.RoomType}");
+
+            //MaternityRoom f = new MaternityRoom();
+
+            //Console.WriteLine($"{f.RoomType}, {f.Type}");
+
             using (BirthClinicPlanningContext context = new BirthClinicPlanningContext())
             {
 
