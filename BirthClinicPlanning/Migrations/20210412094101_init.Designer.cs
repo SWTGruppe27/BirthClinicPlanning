@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BirthClinicPlanning.Migrations
 {
     [DbContext(typeof(BirthClinicPlanningContext))]
-    [Migration("20210409075103_init")]
+    [Migration("20210412094101_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -210,6 +210,33 @@ namespace BirthClinicPlanning.Migrations
                     b.HasDiscriminator().HasValue("Sosu");
                 });
 
+            modelBuilder.Entity("BirthClinicPlanning.Models.Family", b =>
+                {
+                    b.HasBaseType("BirthClinicPlanning.Models.Relatives");
+
+                    b.ToTable("Families");
+                });
+
+            modelBuilder.Entity("BirthClinicPlanning.Models.Father", b =>
+                {
+                    b.HasBaseType("BirthClinicPlanning.Models.Relatives");
+
+                    b.Property<string>("CPRNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.ToTable("Fathers");
+                });
+
+            modelBuilder.Entity("BirthClinicPlanning.Models.Mother", b =>
+                {
+                    b.HasBaseType("BirthClinicPlanning.Models.Relatives");
+
+                    b.Property<string>("CPRNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.ToTable("Mothers");
+                });
+
             modelBuilder.Entity("BirthClinicPlanning.MaternityRoom", b =>
                 {
                     b.HasBaseType("BirthClinicPlanning.Models.RestRoom");
@@ -285,6 +312,33 @@ namespace BirthClinicPlanning.Migrations
                         .IsRequired();
 
                     b.Navigation("Relatives");
+                });
+
+            modelBuilder.Entity("BirthClinicPlanning.Models.Family", b =>
+                {
+                    b.HasOne("BirthClinicPlanning.Models.Relatives", null)
+                        .WithOne()
+                        .HasForeignKey("BirthClinicPlanning.Models.Family", "RelativesId")
+                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("BirthClinicPlanning.Models.Father", b =>
+                {
+                    b.HasOne("BirthClinicPlanning.Models.Relatives", null)
+                        .WithOne()
+                        .HasForeignKey("BirthClinicPlanning.Models.Father", "RelativesId")
+                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("BirthClinicPlanning.Models.Mother", b =>
+                {
+                    b.HasOne("BirthClinicPlanning.Models.Relatives", null)
+                        .WithOne()
+                        .HasForeignKey("BirthClinicPlanning.Models.Mother", "RelativesId")
+                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("BirthClinicPlanning.Birth", b =>

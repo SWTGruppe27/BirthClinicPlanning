@@ -88,6 +88,59 @@ namespace BirthClinicPlanning.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Families",
+                columns: table => new
+                {
+                    RelativesId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Families", x => x.RelativesId);
+                    table.ForeignKey(
+                        name: "FK_Families_Relatives_RelativesId",
+                        column: x => x.RelativesId,
+                        principalTable: "Relatives",
+                        principalColumn: "RelativesId",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Fathers",
+                columns: table => new
+                {
+                    RelativesId = table.Column<int>(type: "int", nullable: false),
+                    CPRNumber = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Fathers", x => x.RelativesId);
+                    table.ForeignKey(
+                        name: "FK_Fathers_Relatives_RelativesId",
+                        column: x => x.RelativesId,
+                        principalTable: "Relatives",
+                        principalColumn: "RelativesId",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Mothers",
+                columns: table => new
+                {
+                    RelativesId = table.Column<int>(type: "int", nullable: false),
+                    CPRNumber = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Mothers", x => x.RelativesId);
+                    table.ForeignKey(
+                        name: "FK_Mothers_Relatives_RelativesId",
+                        column: x => x.RelativesId,
+                        principalTable: "Relatives",
+                        principalColumn: "RelativesId",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "RestRooms",
                 columns: table => new
                 {
@@ -176,6 +229,15 @@ namespace BirthClinicPlanning.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Clinicians");
+
+            migrationBuilder.DropTable(
+                name: "Families");
+
+            migrationBuilder.DropTable(
+                name: "Fathers");
+
+            migrationBuilder.DropTable(
+                name: "Mothers");
 
             migrationBuilder.DropTable(
                 name: "RelativesChild");

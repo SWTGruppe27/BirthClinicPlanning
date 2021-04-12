@@ -10,11 +10,13 @@ namespace BirthClinicPlanning.Data
 {
     public class BirthClinicPlanningContext : DbContext
     {
+
         protected override void OnConfiguring(DbContextOptionsBuilder ob)
         {
             ob.UseSqlServer(
                 @"Data Source=(localdb)\DAB;Initial Catalog=BirthClinicPlanning;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
         }
+
 
         protected override void OnModelCreating(ModelBuilder mb)
         {
@@ -37,12 +39,14 @@ namespace BirthClinicPlanning.Data
                 .WithOne(rc => rc.Relatives)
                 .HasForeignKey(rc => rc.RelativesId);
 
+            mb.Entity<Father>().ToTable("Fathers");
+            mb.Entity<Mother>().ToTable("Mothers");
+            mb.Entity<Family>().ToTable("Families");
+
             mb.Entity<RelativesChild>().HasKey(rc => rc.RelativesChildId);
 
-            mb.Entity<Secretaries>().HasKey(s => s.EmployeeId);
 
-            //mb.Entity<Relatives>().HasDiscriminator(r => r.Relation);
-            //mb.Entity<Relatives>().p
+            mb.Entity<Secretaries>().HasKey(s => s.EmployeeId);
 
             mb.Entity<RestRoom>().HasKey(rr => rr.RoomNumber);
             mb.Entity<RestRoom>().HasOne(rr => rr.Relatives)
@@ -73,5 +77,8 @@ namespace BirthClinicPlanning.Data
         public DbSet<RestRoom4Hours> RestRoom4Hours { get; set; }
         public DbSet<MaternityRoom> MaternityRooms { get; set; }
         public DbSet<BirthRoom> BirthRooms { get; set; }
+        public DbSet<Father> Fathers { get; set; }
+        public DbSet<Mother> Mothers { get; set; }
+        public DbSet<Family> Families { get; set; }
     }
 }

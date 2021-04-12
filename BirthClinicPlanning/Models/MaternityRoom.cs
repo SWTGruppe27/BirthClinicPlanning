@@ -9,6 +9,6 @@ namespace BirthClinicPlanning
 {
     public class MaternityRoom : RestRoom
     {
-
+       
     }
 }
