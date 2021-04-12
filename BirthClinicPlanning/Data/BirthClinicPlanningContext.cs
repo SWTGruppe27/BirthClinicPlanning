@@ -53,7 +53,8 @@ namespace BirthClinicPlanning.Data
             mb.Entity<RestRoom>().HasOne(rr => rr.Relatives)
                 .WithOne(r => r.RestRoom)
                 .HasForeignKey<RestRoom>();
-
+           
+            mb.Entity<MaternityRoom>().ToTable("MaternityRooms");
             mb.Entity<BirthRoom>().ToTable("BirthRooms");
             mb.Entity<RestRoom4Hours>().ToTable("RestRoom4Hours");
 
