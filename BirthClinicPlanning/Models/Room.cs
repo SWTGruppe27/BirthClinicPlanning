@@ -6,9 +6,19 @@ using System.Threading.Tasks;
 
 namespace BirthClinicPlanning.Models
 {
-    public class Room
+    public abstract class Room
     {
         public int RoomNumber { get; set; }
         public string RoomType { get; set; }
+
+        protected Room()
+        {
+
+        }
+
+        protected Room(string roomType)
+        {
+            RoomType = roomType;
+        }
     }
 }

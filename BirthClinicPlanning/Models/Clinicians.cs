@@ -13,6 +13,10 @@ namespace BirthClinicPlanning
         public int BirthRoomId { get; set; }
         public BirthRoom BirthRoom { get; set; }
 
+        protected Clinicians()
+        {
+        }
+
         protected Clinicians(string name) : base(name)
         {
             Title = "Clinician";

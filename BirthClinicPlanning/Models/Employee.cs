@@ -12,6 +12,10 @@ namespace BirthClinicPlanning.Models
         public string Title { get; set; } //Secretarie og clinician
         public string FullName { get; set; }
 
+        protected Employee()
+        {
+        }
+
         protected Employee(string name)
         {
             FullName = name;

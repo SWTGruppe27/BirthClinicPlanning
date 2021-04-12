@@ -12,5 +12,15 @@ namespace BirthClinicPlanning.Models
         public int EmployeeId { get; set; }
         public Birth Birth { get; set; }
         public List<Clinicians> CliniciansList { get; set; }
+
+        public BirthRoom()
+        {
+
+        }
+
+        public BirthRoom(string type) : base(type)
+        {
+            RoomType = "BirthRoom";
+        }
     }
 }

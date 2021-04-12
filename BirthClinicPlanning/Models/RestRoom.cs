@@ -6,9 +6,19 @@ using System.Threading.Tasks;
 
 namespace BirthClinicPlanning.Models
 {
-    public class RestRoom : Room
+    public abstract class RestRoom : Room
     {
         public Relatives Relatives { get; set; }
         public string Type { get; set; }
+
+        protected RestRoom()
+        {
+            
+        }
+
+        protected RestRoom(string type) : base(type)
+        {
+            RoomType = "Restroom";
+        }
     }
 }

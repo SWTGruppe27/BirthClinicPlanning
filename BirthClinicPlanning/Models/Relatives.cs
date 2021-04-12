@@ -6,15 +6,17 @@ using System.Threading.Tasks;
 
 namespace BirthClinicPlanning.Models
 {
-    public class Relatives
+    public abstract class Relatives
     {
         protected Relatives()
         {
         }
+
         protected Relatives(string name)
         {
             FullName = name;
         }
+
         public int RelativesId { get; set; }
         public int RestRoomId { get; set; }
         public string FullName { get; set; }

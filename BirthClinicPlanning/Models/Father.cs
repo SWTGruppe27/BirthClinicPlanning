@@ -12,6 +12,7 @@ namespace BirthClinicPlanning.Models
         public Father()
         {
         }
+
         public Father(string name) : base(name)
         {
             Relation = "Father";

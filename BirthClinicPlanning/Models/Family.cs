@@ -12,9 +12,10 @@ namespace BirthClinicPlanning.Models
         public Family()
         {
         }
+
         public Family(string name) : base(name)
         {
-            Relation = "hujisdfi";
+            Relation = "Family";
         }
 
     }
