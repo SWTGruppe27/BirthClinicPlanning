@@ -8,5 +8,9 @@ namespace BirthClinicPlanning
 {
     public class Sosu : Clinicians 
     {
+        public Sosu(string name) : base(name)
+        {
+            Position = "Sosu";
+        }
     }
 }

@@ -8,6 +8,9 @@ namespace BirthClinicPlanning.Models
 {
     public class Secretaries : Employee
     {
-
+        public Secretaries(string name) : base(name)
+        {
+            Title = "Secretary";
+        }
     }
 }

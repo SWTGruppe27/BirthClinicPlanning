@@ -47,11 +47,15 @@ namespace BirthClinicPlanning.Data
 
 
             mb.Entity<Secretaries>().HasKey(s => s.EmployeeId);
+            mb.Entity<Secretaries>().ToTable("Secretaries");
 
             mb.Entity<RestRoom>().HasKey(rr => rr.RoomNumber);
             mb.Entity<RestRoom>().HasOne(rr => rr.Relatives)
                 .WithOne(r => r.RestRoom)
                 .HasForeignKey<RestRoom>();
+
+            mb.Entity<BirthRoom>().ToTable("BirthRooms");
+            mb.Entity<RestRoom4Hours>().ToTable("RestRoom4Hours");
 
             mb.Entity<BirthRoom>().HasKey(b => b.RoomNumber);
             mb.Entity<BirthRoom>().HasMany(b => b.CliniciansList)
@@ -62,6 +66,12 @@ namespace BirthClinicPlanning.Data
             mb.Entity<Clinicians>().HasOne(c => c.BirthRoom)
                 .WithMany(b => b.CliniciansList)
                 .HasForeignKey(b => b.EmployeeId);
+
+            mb.Entity<Doctors>().ToTable("Doctors");
+            mb.Entity<Midwifes>().ToTable("Midwifes");
+            mb.Entity<Nurses>().ToTable("Nurses");
+            mb.Entity<Sosu>().ToTable("Sosu");
+
         }
 
         public DbSet<Secretaries> Secretaries { get; set; }
