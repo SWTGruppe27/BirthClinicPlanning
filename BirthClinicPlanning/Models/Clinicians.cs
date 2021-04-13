@@ -11,7 +11,7 @@ namespace BirthClinicPlanning
     {
         public string Position { get; set; }
         public int BirthRoomId { get; set; }
-        public BirthRoom BirthRoom { get; set; }
+        public List<Works> WorksList  { get; set; }
 
         protected Clinicians()
         {

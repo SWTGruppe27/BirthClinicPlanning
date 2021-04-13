@@ -21,7 +21,7 @@ namespace BirthClinicPlanning.Models
         public int RestRoomId { get; set; }
         public string FullName { get; set; }
         public string Relation { get; set; }
-        public RestRoom RestRoom { get; set; }
+        public List<Reservation> ReservationList { get; set; }
         public List<RelativesChild> RelativesChildList { get; set; }
     }
 }

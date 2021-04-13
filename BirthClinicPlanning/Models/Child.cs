@@ -12,6 +12,8 @@ namespace BirthClinicPlanning
     {
         public int CprNumber { get; set; }
         public int BirthId { get; set; }
+        public DateTime Birthdate { get; set; }
+        public string Gender { get; set; }
         public Birth Birth { get; set; }
         public List<RelativesChild> RelativesChild { get; set; }
     }

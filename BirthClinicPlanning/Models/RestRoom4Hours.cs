@@ -9,7 +9,7 @@ namespace BirthClinicPlanning
 {
     public class RestRoom4Hours : RestRoom
     {
-        public RestRoom4Hours()
+        public RestRoom4Hours(DateTime occupiedStart)
         {
             Type = "RestRoom4Hours";
         }

@@ -11,6 +11,7 @@ namespace BirthClinicPlanning.Models
         public int RoomNumber { get; set; }
         public string RoomType { get; set; }
 
+        public List<Reservation> ReservationList { get; set; }
         protected Room()
         {
 

@@ -8,9 +8,9 @@ namespace BirthClinicPlanning.Models
 {
     public abstract class RestRoom : Room
     {
-        public Relatives Relatives { get; set; }
         public string Type { get; set; }
-
+        public DateTime OccupiedStart { get; set; }
+        public DateTime OccupiedEnd { get; set; }
         protected RestRoom()
         {
             RoomType = "Restroom";

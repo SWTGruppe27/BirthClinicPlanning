@@ -26,9 +26,22 @@ namespace BirthClinicPlanning.Data
                 .WithOne(c => c.Birth)
                 .HasForeignKey(c => c.BirthId);
 
-            mb.Entity<Birth>().HasOne(b => b.BirthRoom)
-                .WithOne(br => br.Birth)
-                .HasForeignKey<BirthRoom>();
+            mb.Entity<Reservation>().HasKey(r => r.ReservationId);
+            mb.Entity<Works>().HasKey(w => w.WorksId);
+
+            mb.Entity<Clinicians>().HasKey(c => c.EmployeeId);
+            mb.Entity<Clinicians>().HasMany(c => c.WorksList)
+                .WithOne(w => w.Clinicians)
+                .HasForeignKey(w => w.EmployeeId);
+
+            mb.Entity<Birth>().HasMany(b => b.WorksList)
+                .WithOne(w => w.Birth)
+                .HasForeignKey(w => w.BirthId);
+
+            mb.Entity<Room>().HasKey(r => r.RoomNumber);
+            mb.Entity<Room>().HasMany(r => r.ReservationList)
+                .WithOne(r =>r.Room)
+                .HasForeignKey(r => r.RoomId);
 
             mb.Entity<Child>().HasKey(c => c.CprNumber);
             mb.Entity<Child>().HasMany(c => c.RelativesChild)
@@ -40,34 +53,23 @@ namespace BirthClinicPlanning.Data
                 .WithOne(rc => rc.Relatives)
                 .HasForeignKey(rc => rc.RelativesId);
 
+            mb.Entity<Relatives>().HasMany(r => r.ReservationList)
+                .WithOne(r => r.Relatives)
+                .HasForeignKey(r => r.RelativesId);
+
             mb.Entity<Father>().ToTable("Fathers");
             mb.Entity<Mother>().ToTable("Mothers");
             mb.Entity<Family>().ToTable("Families");
 
             mb.Entity<RelativesChild>().HasKey(rc => rc.RelativesChildId);
 
-
             mb.Entity<Secretaries>().HasKey(s => s.EmployeeId);
             mb.Entity<Secretaries>().ToTable("Secretaries");
 
-            mb.Entity<RestRoom>().HasKey(rr => rr.RoomNumber);
-            mb.Entity<RestRoom>().HasOne(rr => rr.Relatives)
-                .WithOne(r => r.RestRoom)
-                .HasForeignKey<RestRoom>();
-           
             mb.Entity<MaternityRoom>().ToTable("MaternityRooms");
             mb.Entity<BirthRoom>().ToTable("BirthRooms");
+            mb.Entity<RestRoom>().ToTable("RestRooms");
             mb.Entity<RestRoom4Hours>().ToTable("RestRoom4Hours");
-
-            mb.Entity<BirthRoom>().HasKey(b => b.RoomNumber);
-            mb.Entity<BirthRoom>().HasMany(b => b.CliniciansList)
-                .WithOne(c => c.BirthRoom)
-                .HasForeignKey(c => c.BirthRoomId);
-
-            mb.Entity<Clinicians>().HasKey(c => c.EmployeeId);
-            mb.Entity<Clinicians>().HasOne(c => c.BirthRoom)
-                .WithMany(b => b.CliniciansList)
-                .HasForeignKey(b => b.EmployeeId);
 
             mb.Entity<Doctors>().ToTable("Doctors");
             mb.Entity<Midwifes>().ToTable("Midwifes");
@@ -75,14 +77,13 @@ namespace BirthClinicPlanning.Data
             mb.Entity<Sosu>().ToTable("Sosu");
 
 
-            SeedData(mb);
+            //SeedData(mb);
         }
         private void SeedData(ModelBuilder mb)
         {
             //mb.Entity<Father>().HasData(new Father {CPRNumber = "030587642", FullName = "Jens Jensen", RelativesId = 1});
-            RestRoom4Hours 
-            
-            mb.Entity<RestRoom4Hours>().HasData(new RestRoom4Hours { RoomNumber = 2 });
+
+            //mb.Entity<RestRoom4Hours>().HasData(new RestRoom4Hours { RoomNumber = 2 });
             
             mb.Entity<Mother>().HasData(new Mother {CPRNumber = "000000000", FullName = "Pia Jensen", RelativesId = 2, RestRoomId = 2});
             mb.Entity<Child>().HasData(new Child {BirthId = 2, CprNumber = 111111});
@@ -113,5 +114,8 @@ namespace BirthClinicPlanning.Data
         public DbSet<Father> Fathers { get; set; }
         public DbSet<Mother> Mothers { get; set; }
         public DbSet<Family> Families { get; set; }
+        public DbSet<Reservation> Reservations { get; set; }
+        public DbSet<Works> Works { get; set; }
+
     }
 }

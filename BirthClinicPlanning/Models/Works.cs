@@ -6,14 +6,12 @@ using System.Threading.Tasks;
 
 namespace BirthClinicPlanning.Models
 {
-    public class BirthRoom : Room
+    public class Works
     {
+        public int WorksId { get; set; }
         public int BirthId { get; set; }
+        public Birth Birth { get; set; }
         public int EmployeeId { get; set; }
-
-        public BirthRoom()
-        {
-            RoomType = "BirthRoom";
-        }
+        public Clinicians Clinicians { get; set; }
     }
 }
