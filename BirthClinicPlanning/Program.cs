@@ -35,8 +35,9 @@ namespace BirthClinicPlanning
                 Console.WriteLine("6. Vis klinikere tilkoblet fødsler");
                 Console.WriteLine("7. Marker en fødsel som færdig");
                 Console.WriteLine("8. Annuller en reservation på et rum");
-                Console.WriteLine("9. Opret en ny reservation");
-                Console.WriteLine("10. Luk programmet\n");
+                Console.WriteLine("9. Opret en fødsel");
+                Console.WriteLine("10. Opret en ny reservation");
+                Console.WriteLine("11. Luk programmet\n");
 
                 string input = Console.ReadLine();
 
@@ -85,11 +86,15 @@ namespace BirthClinicPlanning
                         break;
 
                     case 9:
+                        NewBirth(dbSearch);
+                        break;
+
+                    case 10:
                         Console.WriteLine("Lav en reservation i en af disse rumtyper: \n a: Maternityroom \n b: Restroom (4 hours) \n c: Birthroom \n");
                         MakeReservation();
                         break;
 
-                    case 10:
+                    case 11:
                         running = false;
                         break;
 
@@ -248,6 +253,7 @@ namespace BirthClinicPlanning
                 makeReservation.SaveChanges();
             }
         }
+
         static DateTime ReservationDate()
         {
             Console.Write("Vælg en måned: ");
@@ -264,6 +270,62 @@ namespace BirthClinicPlanning
             DateTime inputtedDate = new DateTime(year, month, day, time, minuts, 0);
 
             return inputtedDate;
+        }
+
+        static void NewBirth(DatabaseSearch dbSearch)
+        {
+            int numberOfMaternityRooms = 0;
+            int numberOfRestRoom4HoursRooms = 0;
+            int numberOfBirthRoomsRooms = 0;
+
+            using (BirthClinicPlanningContext numberOfRooms = new BirthClinicPlanningContext())
+            {
+                numberOfMaternityRooms = numberOfRooms.MaternityRooms.Count();
+                numberOfRestRoom4HoursRooms = numberOfRooms.RestRoom4Hours.Count();
+                numberOfBirthRoomsRooms = numberOfRooms.BirthRooms.Count();
+            }
+
+            Console.WriteLine($"Vælg en start dato for din fødsel.");
+            Birth newBirth = new Birth();
+            newBirth.PlannedStartDate = ReservationDate();
+
+            Console.WriteLine($"Vælg en slut dato for din fødsel.");
+            newBirth.PlannedEndDate = ReservationDate();
+
+            Console.WriteLine($"Vælg et fødselserum mellem {numberOfMaternityRooms + numberOfRestRoom4HoursRooms + 1} og {numberOfBirthRoomsRooms + numberOfMaternityRooms + numberOfRestRoom4HoursRooms}: ");
+            int choice3 = int.Parse(Console.ReadLine());
+
+            bool notDone = true;
+            List<Works> workers = new List<Works>(); 
+
+            while (notDone)
+            {
+                if (Console.ReadKey().Key != ConsoleKey.E)
+                {
+                    Works clinicianWorks = new Works();
+
+                    clinicianWorks.Birth = newBirth;
+
+                    Console.WriteLine($"Vælg et ledig personale: ");
+                    dbSearch.ShowAvaliableClinciansAndRoomsForNextFiveDays();
+                    int choice4 = int.Parse(Console.ReadLine());
+
+                    clinicianWorks.EmployeeId = choice4;
+
+                    workers.Add(clinicianWorks);
+                }
+                else
+                {
+                    notDone = false;
+                }
+            }
+
+            using (BirthClinicPlanningContext makeBirth = new BirthClinicPlanningContext())
+            {
+                makeBirth.Add(newBirth);
+                makeBirth.Add(workers);
+                makeBirth.SaveChanges();
+            }
         }
     }
 }
