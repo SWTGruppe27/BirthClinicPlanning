@@ -300,6 +300,7 @@ namespace BirthClinicPlanning
 
             while (notDone)
             {
+                Console.WriteLine("Tryk enter for at gå videre og 'e' for at afslutte");
                 if (Console.ReadKey().Key != ConsoleKey.E)
                 {
                     Works clinicianWorks = new Works();
@@ -308,6 +309,8 @@ namespace BirthClinicPlanning
 
                     Console.WriteLine($"Vælg et ledig personale: ");
                     dbSearch.ShowAvaliableClinciansAndRoomsForNextFiveDays();
+                    
+                    Console.WriteLine("Indtast et Id på et ledig personale");
                     int choice4 = int.Parse(Console.ReadLine());
 
                     clinicianWorks.EmployeeId = choice4;
@@ -323,7 +326,10 @@ namespace BirthClinicPlanning
             using (BirthClinicPlanningContext makeBirth = new BirthClinicPlanningContext())
             {
                 makeBirth.Add(newBirth);
-                makeBirth.Add(workers);
+                foreach (var works in workers)
+                {
+                    makeBirth.Add(works);
+                }
                 makeBirth.SaveChanges();
             }
         }
