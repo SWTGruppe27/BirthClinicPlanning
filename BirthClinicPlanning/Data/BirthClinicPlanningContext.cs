@@ -188,8 +188,19 @@ namespace BirthClinicPlanning.Data
                 birthRoom.RoomNumber = i;
                 birthRooms.Add(birthRoom);
             }
-            mb.Entity<MaternityRoom>().HasData(birthRooms);
+            mb.Entity<BirthRoom>().HasData(birthRooms);
 
+            List<Reservation> reservations = new List<Reservation>();
+
+            for (int i = 1; i < 43 ; i++)
+            {
+                Reservation reservation = new Reservation();
+                reservation.ReservationId = i;
+                reservation.RoomId = i;
+                reservations.Add(reservation);
+            }
+
+            mb.Entity<Reservation>().HasData(reservations);
         }
 
         public DbSet<Secretaries> Secretaries { get; set; }
@@ -201,7 +212,6 @@ namespace BirthClinicPlanning.Data
         public DbSet<Relatives> Relatives { get; set; }
         public DbSet<Birth> Births { get; set; }
         public DbSet<Child> Children { get; set; }
-        public DbSet<Room> Rooms { get; set; }
         public DbSet<RestRoom> RestRooms { get; set; }
         public DbSet<RestRoom4Hours> RestRoom4Hours { get; set; }
         public DbSet<MaternityRoom> MaternityRooms { get; set; }

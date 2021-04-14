@@ -175,8 +175,8 @@ namespace BirthClinicPlanning.Migrations
                 {
                     WorksId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    BirthId = table.Column<int>(type: "int", nullable: false),
-                    EmployeeId = table.Column<int>(type: "int", nullable: false)
+                    BirthId = table.Column<int>(type: "int", nullable: true),
+                    EmployeeId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -186,13 +186,13 @@ namespace BirthClinicPlanning.Migrations
                         column: x => x.BirthId,
                         principalTable: "Births",
                         principalColumn: "BirthId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Works_Clinicians_EmployeeId",
                         column: x => x.EmployeeId,
                         principalTable: "Clinicians",
                         principalColumn: "EmployeeId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -252,9 +252,7 @@ namespace BirthClinicPlanning.Migrations
                 name: "BirthRooms",
                 columns: table => new
                 {
-                    RoomNumber = table.Column<int>(type: "int", nullable: false),
-                    BirthId = table.Column<int>(type: "int", nullable: false),
-                    EmployeeId = table.Column<int>(type: "int", nullable: false)
+                    RoomNumber = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -276,7 +274,7 @@ namespace BirthClinicPlanning.Migrations
                     RoomId = table.Column<int>(type: "int", nullable: false),
                     ReservationStartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ReservationEndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    RelativesId = table.Column<int>(type: "int", nullable: false)
+                    RelativesId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -286,7 +284,7 @@ namespace BirthClinicPlanning.Migrations
                         column: x => x.RelativesId,
                         principalTable: "Relatives",
                         principalColumn: "RelativesId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Reservations_Room_RoomId",
                         column: x => x.RoomId,
@@ -378,31 +376,35 @@ namespace BirthClinicPlanning.Migrations
                 columns: new[] { "EmployeeId", "BirthRoomId", "FullName", "Position", "Title" },
                 values: new object[,]
                 {
+                    { 25, 0, "Daniel Danielsen", "Doctor", "Clinician" },
+                    { 48, 0, "Mads Madsen", "Midwife", "Clinician" },
+                    { 49, 0, "Marie Toft", "Midwife", "Clinician" },
+                    { 50, 0, "Malene Sørensen", "Midwife", "Clinician" },
+                    { 51, 0, "Morten Mortensen", "Midwife", "Clinician" },
+                    { 52, 0, "Martin Frederiksen", "Midwife", "Clinician" },
+                    { 53, 0, "Marcus Nielsen", "Midwife", "Clinician" },
                     { 54, 0, "Maja Mikkelsen", "Midwife", "Clinician" },
-                    { 43, 0, "No Name", "Nurse", "Clinician" },
+                    { 55, 0, "Maria Loft Nielsen", "Midwife", "Clinician" },
                     { 42, 0, "Norbit Albertrise", "Nurse", "Clinician" },
                     { 41, 0, "Neville Longbottom", "Nurse", "Clinician" },
                     { 40, 0, "Naja Madsen", "Nurse", "Clinician" },
+                    { 47, 0, "Mille Madsen", "Midwife", "Clinician" },
                     { 39, 0, "Nelly Winston", "Nurse", "Clinician" },
-                    { 38, 0, "Nanna Louise Johansen", "Nurse", "Clinician" },
                     { 37, 0, "Nikita Mortensen Bækgaard", "Nurse", "Clinician" },
                     { 36, 0, "Nadai Jensen", "Nurse", "Clinician" },
                     { 35, 0, "Nora Andersen", "Nurse", "Clinician" },
-                    { 44, 0, "Nairobi Kenya", "Nurse", "Clinician" },
                     { 34, 0, "Nik Petersen", "Nurse", "Clinician" },
+                    { 33, 0, "Noah Overbyen", "Nurse", "Clinician" },
                     { 32, 0, "Niller Nielsen", "Nurse", "Clinician" },
                     { 31, 0, "Nicki Sørensen", "Nurse", "Clinician" },
                     { 30, 0, "Natalia Alianovna Romanova", "Nurse", "Clinician" },
+                    { 24, 0, "Diana Jensen", "Doctor", "Clinician" },
                     { 29, 0, "Natasha Romanoff", "Nurse", "Clinician" },
                     { 28, 0, "Niklas Landin", "Nurse", "Clinician" },
+                    { 38, 0, "Nanna Louise Johansen", "Nurse", "Clinician" },
                     { 27, 0, "Nikolaj Nikolajsen", "Nurse", "Clinician" },
-                    { 26, 0, "Niels Nielsen", "Nurse", "Clinician" },
-                    { 55, 0, "Maria Loft Nielsen", "Midwife", "Clinician" },
-                    { 24, 0, "Diana Jensen", "Doctor", "Clinician" },
-                    { 33, 0, "Noah Overbyen", "Nurse", "Clinician" },
-                    { 45, 0, "Norge Nordmand", "Nurse", "Clinician" },
-                    { 1, 0, "Sofie Jensen", "Sosu", "Clinician" },
-                    { 2, 0, "Søren Larsen", "Sosu", "Clinician" },
+                    { 46, 0, "Malfoy Draco", "Midwife", "Clinician" },
+                    { 44, 0, "Nairobi Kenya", "Nurse", "Clinician" },
                     { 23, 0, "David Davidson", "Doctor", "Clinician" },
                     { 22, 0, "Dirk Passer", "Doctor", "Clinician" },
                     { 21, 0, "Danny Boy", "Doctor", "Clinician" },
@@ -414,12 +416,8 @@ namespace BirthClinicPlanning.Migrations
                     { 15, 0, "Simone Kjær", "Sosu", "Clinician" },
                     { 14, 0, "Sol-Solvej Solskin", "Sosu", "Clinician" },
                     { 13, 0, "Sophie Loft", "Sosu", "Clinician" },
-                    { 12, 0, "Siff Andersen", "Sosu", "Clinician" },
-                    { 11, 0, "Silke Rasmusen", "Sosu", "Clinician" },
-                    { 10, 0, "Sandra Toft", "Sosu", "Clinician" },
-                    { 9, 0, "Stine Olsen", "Sosu", "Clinician" },
-                    { 8, 0, "Susan Kristensen", "Sosu", "Clinician" },
-                    { 7, 0, "Selma Jakobsen", "Sosu", "Clinician" }
+                    { 43, 0, "No Name", "Nurse", "Clinician" },
+                    { 12, 0, "Siff Andersen", "Sosu", "Clinician" }
                 });
 
             migrationBuilder.InsertData(
@@ -427,19 +425,19 @@ namespace BirthClinicPlanning.Migrations
                 columns: new[] { "EmployeeId", "BirthRoomId", "FullName", "Position", "Title" },
                 values: new object[,]
                 {
+                    { 10, 0, "Sandra Toft", "Sosu", "Clinician" },
+                    { 9, 0, "Stine Olsen", "Sosu", "Clinician" },
+                    { 8, 0, "Susan Kristensen", "Sosu", "Clinician" },
+                    { 7, 0, "Selma Jakobsen", "Sosu", "Clinician" },
                     { 6, 0, "Simon Schou Jensen", "Sosu", "Clinician" },
                     { 5, 0, "Simon Bjermand Kjær", "Sosu", "Clinician" },
                     { 4, 0, "Susanne Himmelblå", "Sosu", "Clinician" },
                     { 3, 0, "Sarah Hansen", "Sosu", "Clinician" },
-                    { 53, 0, "Marcus Nielsen", "Midwife", "Clinician" },
-                    { 52, 0, "Martin Frederiksen", "Midwife", "Clinician" },
-                    { 25, 0, "Daniel Danielsen", "Doctor", "Clinician" },
-                    { 50, 0, "Malene Sørensen", "Midwife", "Clinician" },
-                    { 49, 0, "Marie Toft", "Midwife", "Clinician" },
-                    { 48, 0, "Mads Madsen", "Midwife", "Clinician" },
-                    { 51, 0, "Morten Mortensen", "Midwife", "Clinician" },
-                    { 47, 0, "Mille Madsen", "Midwife", "Clinician" },
-                    { 46, 0, "Malfoy Draco", "Midwife", "Clinician" }
+                    { 2, 0, "Søren Larsen", "Sosu", "Clinician" },
+                    { 1, 0, "Sofie Jensen", "Sosu", "Clinician" },
+                    { 45, 0, "Norge Nordmand", "Nurse", "Clinician" },
+                    { 11, 0, "Silke Rasmusen", "Sosu", "Clinician" },
+                    { 26, 0, "Niels Nielsen", "Nurse", "Clinician" }
                 });
 
             migrationBuilder.InsertData(
@@ -447,8 +445,8 @@ namespace BirthClinicPlanning.Migrations
                 columns: new[] { "RoomNumber", "RoomType" },
                 values: new object[,]
                 {
-                    { 21, "Restroom" },
-                    { 20, "Restroom" },
+                    { 41, "BirthRoom" },
+                    { 22, "Restroom" },
                     { 19, "Restroom" },
                     { 18, "Restroom" },
                     { 17, "Restroom" },
@@ -456,9 +454,9 @@ namespace BirthClinicPlanning.Migrations
                     { 15, "Restroom" },
                     { 14, "Restroom" },
                     { 13, "Restroom" },
-                    { 10, "Restroom" },
+                    { 12, "Restroom" },
+                    { 20, "Restroom" },
                     { 11, "Restroom" },
-                    { 22, "Restroom" },
                     { 9, "Restroom" },
                     { 8, "Restroom" },
                     { 7, "Restroom" },
@@ -467,15 +465,15 @@ namespace BirthClinicPlanning.Migrations
                     { 4, "Restroom" },
                     { 3, "Restroom" },
                     { 2, "Restroom" },
-                    { 12, "Restroom" },
-                    { 23, "Restroom" },
-                    { 26, "Restroom" },
-                    { 25, "Restroom" },
-                    { 42, "BirthRoom" },
-                    { 41, "BirthRoom" },
+                    { 10, "Restroom" },
+                    { 21, "Restroom" },
+                    { 1, "Restroom" },
+                    { 34, "BirthRoom" },
                     { 40, "BirthRoom" },
                     { 39, "BirthRoom" },
-                    { 38, "BirthRoom" }
+                    { 38, "BirthRoom" },
+                    { 37, "BirthRoom" },
+                    { 36, "BirthRoom" }
                 });
 
             migrationBuilder.InsertData(
@@ -483,10 +481,8 @@ namespace BirthClinicPlanning.Migrations
                 columns: new[] { "RoomNumber", "RoomType" },
                 values: new object[,]
                 {
-                    { 24, "Restroom" },
-                    { 36, "BirthRoom" },
                     { 35, "BirthRoom" },
-                    { 37, "BirthRoom" },
+                    { 23, "Restroom" },
                     { 33, "BirthRoom" },
                     { 32, "BirthRoom" },
                     { 31, "BirthRoom" },
@@ -494,8 +490,10 @@ namespace BirthClinicPlanning.Migrations
                     { 29, "BirthRoom" },
                     { 28, "BirthRoom" },
                     { 27, "Restroom" },
-                    { 34, "BirthRoom" },
-                    { 1, "Restroom" }
+                    { 26, "Restroom" },
+                    { 25, "Restroom" },
+                    { 24, "Restroom" },
+                    { 42, "BirthRoom" }
                 });
 
             migrationBuilder.InsertData(
@@ -503,10 +501,32 @@ namespace BirthClinicPlanning.Migrations
                 columns: new[] { "EmployeeId", "FullName", "Title" },
                 values: new object[,]
                 {
-                    { 59, "Søren Krag", "Secretary" },
-                    { 58, "Sune Orlater", "Secretary" },
                     { 57, "Signe Mikkelsen", "Secretary" },
-                    { 56, "Simba Kongesøn", "Secretary" }
+                    { 59, "Søren Krag", "Secretary" },
+                    { 56, "Simba Kongesøn", "Secretary" },
+                    { 58, "Sune Orlater", "Secretary" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "BirthRooms",
+                column: "RoomNumber",
+                values: new object[]
+                {
+                    39,
+                    33,
+                    31,
+                    30,
+                    29,
+                    34,
+                    28,
+                    35,
+                    42,
+                    32,
+                    41,
+                    37,
+                    40,
+                    38,
+                    36
                 });
 
             migrationBuilder.InsertData(
@@ -515,15 +535,15 @@ namespace BirthClinicPlanning.Migrations
                 values: new object[]
                 {
                     52,
-                    46,
                     47,
-                    48,
-                    49,
-                    50,
                     51,
-                    53,
                     54,
-                    55
+                    55,
+                    50,
+                    49,
+                    48,
+                    53,
+                    46
                 });
 
             migrationBuilder.InsertData(
@@ -531,26 +551,89 @@ namespace BirthClinicPlanning.Migrations
                 column: "EmployeeId",
                 values: new object[]
                 {
-                    26,
-                    27,
                     28,
-                    30,
-                    31,
-                    29,
-                    33,
-                    45,
-                    44,
-                    43,
-                    42,
-                    32,
                     40,
-                    41,
+                    39,
+                    43,
                     38,
-                    37,
-                    36,
-                    35,
+                    26,
                     34,
-                    39
+                    27,
+                    37,
+                    41,
+                    42,
+                    29,
+                    30,
+                    45,
+                    31,
+                    36,
+                    32
+                });
+
+            migrationBuilder.InsertData(
+                table: "Nurses",
+                column: "EmployeeId",
+                values: new object[]
+                {
+                    35,
+                    33,
+                    44
+                });
+
+            migrationBuilder.InsertData(
+                table: "Reservations",
+                columns: new[] { "ReservationId", "RelativesId", "ReservationEndDate", "ReservationStartDate", "RoomId" },
+                values: new object[,]
+                {
+                    { 37, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 37 },
+                    { 36, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 36 },
+                    { 32, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 32 },
+                    { 28, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 28 },
+                    { 34, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 34 },
+                    { 29, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 29 },
+                    { 33, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 33 },
+                    { 39, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 39 },
+                    { 35, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 35 },
+                    { 31, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 31 },
+                    { 22, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 22 },
+                    { 26, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 26 },
+                    { 1, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 1 },
+                    { 2, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 2 },
+                    { 3, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 3 },
+                    { 4, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 4 },
+                    { 5, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 5 },
+                    { 6, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 6 },
+                    { 7, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 7 },
+                    { 8, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 8 },
+                    { 9, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 9 },
+                    { 10, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 10 },
+                    { 11, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 11 },
+                    { 12, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 12 },
+                    { 13, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 13 },
+                    { 27, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 27 },
+                    { 14, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 14 },
+                    { 16, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 16 },
+                    { 17, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 17 },
+                    { 18, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 18 },
+                    { 19, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 19 },
+                    { 20, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 20 },
+                    { 21, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 21 },
+                    { 42, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 42 },
+                    { 38, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 38 },
+                    { 23, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 23 },
+                    { 41, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 41 },
+                    { 24, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 24 },
+                    { 25, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 25 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Reservations",
+                columns: new[] { "ReservationId", "RelativesId", "ReservationEndDate", "ReservationStartDate", "RoomId" },
+                values: new object[,]
+                {
+                    { 40, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 40 },
+                    { 15, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 15 },
+                    { 30, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 30 }
                 });
 
             migrationBuilder.InsertData(
@@ -558,55 +641,33 @@ namespace BirthClinicPlanning.Migrations
                 columns: new[] { "RoomNumber", "Type" },
                 values: new object[,]
                 {
-                    { 38, null },
-                    { 42, null },
-                    { 41, null },
-                    { 40, null },
-                    { 39, null },
-                    { 37, null },
                     { 1, "MaternityRoom" },
-                    { 35, null },
-                    { 16, "MaternityRoom" },
-                    { 15, "MaternityRoom" },
-                    { 14, "MaternityRoom" },
-                    { 13, "MaternityRoom" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "RestRooms",
-                columns: new[] { "RoomNumber", "Type" },
-                values: new object[,]
-                {
-                    { 12, "MaternityRoom" },
-                    { 11, "MaternityRoom" },
-                    { 10, "MaternityRoom" },
-                    { 9, "MaternityRoom" },
-                    { 8, "MaternityRoom" },
-                    { 36, null },
-                    { 6, "MaternityRoom" },
-                    { 5, "MaternityRoom" },
-                    { 4, "MaternityRoom" },
+                    { 27, "RestRoom4Hours" },
                     { 3, "MaternityRoom" },
+                    { 4, "MaternityRoom" },
+                    { 5, "MaternityRoom" },
+                    { 6, "MaternityRoom" },
+                    { 7, "MaternityRoom" },
+                    { 8, "MaternityRoom" },
+                    { 9, "MaternityRoom" },
+                    { 10, "MaternityRoom" },
+                    { 11, "MaternityRoom" },
+                    { 12, "MaternityRoom" },
+                    { 13, "MaternityRoom" },
+                    { 14, "MaternityRoom" },
                     { 2, "MaternityRoom" },
+                    { 16, "MaternityRoom" },
                     { 17, "MaternityRoom" },
                     { 18, "MaternityRoom" },
-                    { 7, "MaternityRoom" },
-                    { 20, "MaternityRoom" },
                     { 19, "MaternityRoom" },
-                    { 34, null },
-                    { 33, null },
-                    { 31, null },
-                    { 30, null },
-                    { 29, null },
-                    { 28, null },
-                    { 32, null },
-                    { 26, "RestRoom4Hours" },
-                    { 25, "RestRoom4Hours" },
-                    { 24, "RestRoom4Hours" },
-                    { 23, "RestRoom4Hours" },
+                    { 20, "MaternityRoom" },
+                    { 21, "MaternityRoom" },
                     { 22, "MaternityRoom" },
-                    { 27, "RestRoom4Hours" },
-                    { 21, "MaternityRoom" }
+                    { 23, "RestRoom4Hours" },
+                    { 24, "RestRoom4Hours" },
+                    { 25, "RestRoom4Hours" },
+                    { 26, "RestRoom4Hours" },
+                    { 15, "MaternityRoom" }
                 });
 
             migrationBuilder.InsertData(
@@ -618,14 +679,14 @@ namespace BirthClinicPlanning.Migrations
                     16,
                     17,
                     18,
-                    21,
+                    23,
                     20,
+                    21,
                     22,
                     14,
-                    23,
                     19,
                     13,
-                    5
+                    7
                 });
 
             migrationBuilder.InsertData(
@@ -637,8 +698,8 @@ namespace BirthClinicPlanning.Migrations
                     10,
                     9,
                     8,
-                    7,
                     6,
+                    5,
                     4,
                     3,
                     2,
@@ -654,47 +715,32 @@ namespace BirthClinicPlanning.Migrations
                 values: new object[]
                 {
                     1,
-                    24,
                     25,
-                    26,
-                    27,
-                    28,
-                    29,
-                    30,
-                    31,
-                    32,
-                    33,
-                    34,
-                    35,
-                    36,
-                    37,
-                    38,
-                    39,
-                    40,
+                    24,
                     23,
                     22,
                     21,
                     20,
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    7,
-                    8,
-                    9,
-                    41,
-                    10,
-                    12,
-                    13,
-                    14,
-                    15,
-                    16,
-                    17,
-                    18,
                     19,
+                    18,
+                    17,
+                    16,
+                    15,
+                    26,
+                    14,
+                    12,
                     11,
-                    42
+                    10,
+                    9,
+                    8,
+                    7,
+                    6,
+                    5,
+                    4,
+                    3,
+                    2,
+                    13,
+                    27
                 });
 
             migrationBuilder.CreateIndex(

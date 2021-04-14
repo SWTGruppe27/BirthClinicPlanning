@@ -8,9 +8,6 @@ namespace BirthClinicPlanning.Models
 {
     public class BirthRoom : Room
     {
-        public int BirthId { get; set; }
-        public int EmployeeId { get; set; }
-
         public BirthRoom()
         {
             RoomType = "BirthRoom";

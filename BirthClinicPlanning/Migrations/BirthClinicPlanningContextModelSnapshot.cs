@@ -135,7 +135,7 @@ namespace BirthClinicPlanning.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("RelativesId")
+                    b.Property<int?>("RelativesId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("ReservationEndDate")
@@ -154,6 +154,302 @@ namespace BirthClinicPlanning.Migrations
                     b.HasIndex("RoomId");
 
                     b.ToTable("Reservations");
+
+                    b.HasData(
+                        new
+                        {
+                            ReservationId = 1,
+                            ReservationEndDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReservationStartDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RoomId = 1
+                        },
+                        new
+                        {
+                            ReservationId = 2,
+                            ReservationEndDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReservationStartDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RoomId = 2
+                        },
+                        new
+                        {
+                            ReservationId = 3,
+                            ReservationEndDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReservationStartDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RoomId = 3
+                        },
+                        new
+                        {
+                            ReservationId = 4,
+                            ReservationEndDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReservationStartDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RoomId = 4
+                        },
+                        new
+                        {
+                            ReservationId = 5,
+                            ReservationEndDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReservationStartDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RoomId = 5
+                        },
+                        new
+                        {
+                            ReservationId = 6,
+                            ReservationEndDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReservationStartDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RoomId = 6
+                        },
+                        new
+                        {
+                            ReservationId = 7,
+                            ReservationEndDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReservationStartDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RoomId = 7
+                        },
+                        new
+                        {
+                            ReservationId = 8,
+                            ReservationEndDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReservationStartDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RoomId = 8
+                        },
+                        new
+                        {
+                            ReservationId = 9,
+                            ReservationEndDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReservationStartDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RoomId = 9
+                        },
+                        new
+                        {
+                            ReservationId = 10,
+                            ReservationEndDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReservationStartDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RoomId = 10
+                        },
+                        new
+                        {
+                            ReservationId = 11,
+                            ReservationEndDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReservationStartDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RoomId = 11
+                        },
+                        new
+                        {
+                            ReservationId = 12,
+                            ReservationEndDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReservationStartDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RoomId = 12
+                        },
+                        new
+                        {
+                            ReservationId = 13,
+                            ReservationEndDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReservationStartDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RoomId = 13
+                        },
+                        new
+                        {
+                            ReservationId = 14,
+                            ReservationEndDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReservationStartDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RoomId = 14
+                        },
+                        new
+                        {
+                            ReservationId = 15,
+                            ReservationEndDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReservationStartDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RoomId = 15
+                        },
+                        new
+                        {
+                            ReservationId = 16,
+                            ReservationEndDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReservationStartDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RoomId = 16
+                        },
+                        new
+                        {
+                            ReservationId = 17,
+                            ReservationEndDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReservationStartDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RoomId = 17
+                        },
+                        new
+                        {
+                            ReservationId = 18,
+                            ReservationEndDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReservationStartDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RoomId = 18
+                        },
+                        new
+                        {
+                            ReservationId = 19,
+                            ReservationEndDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReservationStartDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RoomId = 19
+                        },
+                        new
+                        {
+                            ReservationId = 20,
+                            ReservationEndDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReservationStartDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RoomId = 20
+                        },
+                        new
+                        {
+                            ReservationId = 21,
+                            ReservationEndDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReservationStartDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RoomId = 21
+                        },
+                        new
+                        {
+                            ReservationId = 22,
+                            ReservationEndDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReservationStartDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RoomId = 22
+                        },
+                        new
+                        {
+                            ReservationId = 23,
+                            ReservationEndDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReservationStartDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RoomId = 23
+                        },
+                        new
+                        {
+                            ReservationId = 24,
+                            ReservationEndDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReservationStartDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RoomId = 24
+                        },
+                        new
+                        {
+                            ReservationId = 25,
+                            ReservationEndDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReservationStartDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RoomId = 25
+                        },
+                        new
+                        {
+                            ReservationId = 26,
+                            ReservationEndDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReservationStartDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RoomId = 26
+                        },
+                        new
+                        {
+                            ReservationId = 27,
+                            ReservationEndDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReservationStartDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RoomId = 27
+                        },
+                        new
+                        {
+                            ReservationId = 28,
+                            ReservationEndDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReservationStartDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RoomId = 28
+                        },
+                        new
+                        {
+                            ReservationId = 29,
+                            ReservationEndDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReservationStartDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RoomId = 29
+                        },
+                        new
+                        {
+                            ReservationId = 30,
+                            ReservationEndDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReservationStartDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RoomId = 30
+                        },
+                        new
+                        {
+                            ReservationId = 31,
+                            ReservationEndDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReservationStartDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RoomId = 31
+                        },
+                        new
+                        {
+                            ReservationId = 32,
+                            ReservationEndDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReservationStartDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RoomId = 32
+                        },
+                        new
+                        {
+                            ReservationId = 33,
+                            ReservationEndDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReservationStartDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RoomId = 33
+                        },
+                        new
+                        {
+                            ReservationId = 34,
+                            ReservationEndDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReservationStartDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RoomId = 34
+                        },
+                        new
+                        {
+                            ReservationId = 35,
+                            ReservationEndDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReservationStartDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RoomId = 35
+                        },
+                        new
+                        {
+                            ReservationId = 36,
+                            ReservationEndDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReservationStartDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RoomId = 36
+                        },
+                        new
+                        {
+                            ReservationId = 37,
+                            ReservationEndDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReservationStartDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RoomId = 37
+                        },
+                        new
+                        {
+                            ReservationId = 38,
+                            ReservationEndDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReservationStartDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RoomId = 38
+                        },
+                        new
+                        {
+                            ReservationId = 39,
+                            ReservationEndDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReservationStartDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RoomId = 39
+                        },
+                        new
+                        {
+                            ReservationId = 40,
+                            ReservationEndDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReservationStartDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RoomId = 40
+                        },
+                        new
+                        {
+                            ReservationId = 41,
+                            ReservationEndDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReservationStartDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RoomId = 41
+                        },
+                        new
+                        {
+                            ReservationId = 42,
+                            ReservationEndDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ReservationStartDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RoomId = 42
+                        });
                 });
 
             modelBuilder.Entity("BirthClinicPlanning.Models.Room", b =>
@@ -222,10 +518,10 @@ namespace BirthClinicPlanning.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("BirthId")
+                    b.Property<int?>("BirthId")
                         .HasColumnType("int");
 
-                    b.Property<int>("EmployeeId")
+                    b.Property<int?>("EmployeeId")
                         .HasColumnType("int");
 
                     b.HasKey("WorksId");
@@ -742,13 +1038,84 @@ namespace BirthClinicPlanning.Migrations
                 {
                     b.HasBaseType("BirthClinicPlanning.Models.Room");
 
-                    b.Property<int>("BirthId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("EmployeeId")
-                        .HasColumnType("int");
-
                     b.ToTable("BirthRooms");
+
+                    b.HasData(
+                        new
+                        {
+                            RoomNumber = 28,
+                            RoomType = "BirthRoom"
+                        },
+                        new
+                        {
+                            RoomNumber = 29,
+                            RoomType = "BirthRoom"
+                        },
+                        new
+                        {
+                            RoomNumber = 30,
+                            RoomType = "BirthRoom"
+                        },
+                        new
+                        {
+                            RoomNumber = 31,
+                            RoomType = "BirthRoom"
+                        },
+                        new
+                        {
+                            RoomNumber = 32,
+                            RoomType = "BirthRoom"
+                        },
+                        new
+                        {
+                            RoomNumber = 33,
+                            RoomType = "BirthRoom"
+                        },
+                        new
+                        {
+                            RoomNumber = 34,
+                            RoomType = "BirthRoom"
+                        },
+                        new
+                        {
+                            RoomNumber = 35,
+                            RoomType = "BirthRoom"
+                        },
+                        new
+                        {
+                            RoomNumber = 36,
+                            RoomType = "BirthRoom"
+                        },
+                        new
+                        {
+                            RoomNumber = 37,
+                            RoomType = "BirthRoom"
+                        },
+                        new
+                        {
+                            RoomNumber = 38,
+                            RoomType = "BirthRoom"
+                        },
+                        new
+                        {
+                            RoomNumber = 39,
+                            RoomType = "BirthRoom"
+                        },
+                        new
+                        {
+                            RoomNumber = 40,
+                            RoomType = "BirthRoom"
+                        },
+                        new
+                        {
+                            RoomNumber = 41,
+                            RoomType = "BirthRoom"
+                        },
+                        new
+                        {
+                            RoomNumber = 42,
+                            RoomType = "BirthRoom"
+                        });
                 });
 
             modelBuilder.Entity("BirthClinicPlanning.Models.RestRoom", b =>
@@ -929,81 +1296,6 @@ namespace BirthClinicPlanning.Migrations
                             RoomNumber = 27,
                             RoomType = "Restroom",
                             Type = "RestRoom4Hours"
-                        },
-                        new
-                        {
-                            RoomNumber = 28,
-                            RoomType = "BirthRoom"
-                        },
-                        new
-                        {
-                            RoomNumber = 29,
-                            RoomType = "BirthRoom"
-                        },
-                        new
-                        {
-                            RoomNumber = 30,
-                            RoomType = "BirthRoom"
-                        },
-                        new
-                        {
-                            RoomNumber = 31,
-                            RoomType = "BirthRoom"
-                        },
-                        new
-                        {
-                            RoomNumber = 32,
-                            RoomType = "BirthRoom"
-                        },
-                        new
-                        {
-                            RoomNumber = 33,
-                            RoomType = "BirthRoom"
-                        },
-                        new
-                        {
-                            RoomNumber = 34,
-                            RoomType = "BirthRoom"
-                        },
-                        new
-                        {
-                            RoomNumber = 35,
-                            RoomType = "BirthRoom"
-                        },
-                        new
-                        {
-                            RoomNumber = 36,
-                            RoomType = "BirthRoom"
-                        },
-                        new
-                        {
-                            RoomNumber = 37,
-                            RoomType = "BirthRoom"
-                        },
-                        new
-                        {
-                            RoomNumber = 38,
-                            RoomType = "BirthRoom"
-                        },
-                        new
-                        {
-                            RoomNumber = 39,
-                            RoomType = "BirthRoom"
-                        },
-                        new
-                        {
-                            RoomNumber = 40,
-                            RoomType = "BirthRoom"
-                        },
-                        new
-                        {
-                            RoomNumber = 41,
-                            RoomType = "BirthRoom"
-                        },
-                        new
-                        {
-                            RoomNumber = 42,
-                            RoomType = "BirthRoom"
                         });
                 });
 
@@ -1048,9 +1340,7 @@ namespace BirthClinicPlanning.Migrations
                 {
                     b.HasOne("BirthClinicPlanning.Models.Relatives", "Relatives")
                         .WithMany("ReservationList")
-                        .HasForeignKey("RelativesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("RelativesId");
 
                     b.HasOne("BirthClinicPlanning.Models.Room", "Room")
                         .WithMany("ReservationList")
@@ -1067,15 +1357,11 @@ namespace BirthClinicPlanning.Migrations
                 {
                     b.HasOne("BirthClinicPlanning.Birth", "Birth")
                         .WithMany("WorksList")
-                        .HasForeignKey("BirthId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("BirthId");
 
                     b.HasOne("BirthClinicPlanning.Clinicians", "Clinicians")
                         .WithMany("WorksList")
-                        .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("EmployeeId");
 
                     b.Navigation("Birth");
 

@@ -13,8 +13,8 @@ namespace BirthClinicPlanning.Models
         public Room Room { get; set; }
         public DateTime ReservationStartDate { get; set; }
         public DateTime ReservationEndDate { get; set; }
-        public int RelativesId { get; set; }
-        public Relatives Relatives { get; set; }
+        public int? RelativesId { get; set; }
+        public Relatives? Relatives { get; set; }
 
     }
 }

@@ -20,38 +20,44 @@ namespace BirthClinicPlanning
 
         public void ShowPlannedBirths()
         {
-            var birthList = _context.Births.Where(b => b.PlannedStartDate.Date == DateTime.Now.Date
+            var birthList = _context.Births.Where(b => (b.PlannedStartDate.Date == DateTime.Now.Date
                                                        || b.PlannedStartDate.Date == DateTime.Now.Date.AddDays(1)
-                                                       || b.PlannedStartDate.Date == DateTime.Now.Date.AddDays(2)).ToList();
+                                                       || b.PlannedStartDate.Date == DateTime.Now.Date.AddDays(2)) 
+                                                       && b.PlannedEndDate !> DateTime.Now).ToList();
             foreach (var birth in birthList)
             {
                 Console.WriteLine($"\nFødsels id: {birth.BirthId}");
                 Console.WriteLine($"Planlagt start tid: { birth.PlannedStartDate}");
                 Console.WriteLine($"Planlagt slut tid: {birth.PlannedEndDate}");
             }
+
+            Console.WriteLine();
         }
 
         public void ShowAvaliableClinciansAndRoomsForNextFiveDays()
         {
+            DateTime dateTime = new DateTime(1, 1, 1, 0, 0, 0, 0);
+
             var reservationList = _context.Reservations
                 .Include(r => r.Room)
-                .Include(r => r.Relatives)
-                .ThenInclude(re => re.RelativesChildList)
-                .ThenInclude(rc => rc.Child)
-                .ThenInclude(c => c.Birth)
-                .ThenInclude(b => b.WorksList)
-                .ThenInclude(w => w.Clinicians)
-                .Where(r => r.ReservationStartDate == DateTime.Now
-                            || r.ReservationStartDate != DateTime.Now.AddDays(1)
-                            || r.ReservationStartDate != DateTime.Now.AddDays(2)
-                            || r.ReservationStartDate != DateTime.Now.AddDays(3)
-                            || r.ReservationStartDate != DateTime.Now.AddDays(4)).ToList();
+                .Where(r => r.ReservationStartDate >= DateTime.Now.AddDays(4) || r.ReservationStartDate == dateTime);
 
             foreach (var reservation in reservationList)
             {
                 Console.WriteLine($"RumNummer: {reservation.Room.RoomNumber} " +
-                                  $"\nType rum: {reservation.Room.RoomType} " +
-                                  $"\nKlinikere: ??");
+                                  $"\nType rum: {reservation.Room.RoomType} ");
+            }
+
+            Console.WriteLine();
+
+            var cliniciansList = _context.Clinicians
+                .Include(c => c.WorksList)
+                .ThenInclude(w => w.Birth)
+                .Where(c => c.BirthRoomId == 0);
+
+            foreach (var clinician in cliniciansList)
+            {
+                Console.WriteLine($"Medarbejder id: {clinician.EmployeeId} \nTitel: {clinician.Position}");
             }
 
         }
@@ -109,18 +115,28 @@ namespace BirthClinicPlanning
             var reservationList = _context.Reservations
                 .Include(r => r.Room)
                 .Include(r => r.Relatives)
-                .Where(r => r.ReservationEndDate > DateTime.Now.Date);
+                .Where(r => r.ReservationEndDate > DateTime.Now && r.ReservationStartDate < DateTime.Now);
 
             foreach (var reservation in reservationList)
             {
-                Console.WriteLine($"Rum Id: {reservation.RoomId} \nRum type: {reservation.Room.RoomType} \nSlut dato: {reservation.ReservationEndDate}");
-
-                Console.WriteLine($"");
-                reservation.Relatives.
-                foreach (var VARIABLE in 
+                if (reservation.Room.RoomType != "BirthRoom")
                 {
-                    
+                    Console.WriteLine($"Rum Id: {reservation.RoomId} " +
+                                      $"\nRum type: {reservation.Room.RoomType} " +
+                                      $"\nStart dato: {reservation.ReservationStartDate}" +
+                                      $"\nSlut dato: {reservation.ReservationEndDate}\n" +
+                                      $"Navn på {reservation.Relatives.Relation}: {reservation.Relatives.FullName}");
+
+                    if (reservation.Relatives.RelativesChildList != null)
+                    {
+                        foreach (var relativesChild in reservation.Relatives.RelativesChildList)
+                        {
+                            Console.WriteLine($"Barn Id: {relativesChild.Child.ChildId} " +
+                                              $"\nCpr nummer: { relativesChild.Child.CprNumber}");
+                        }
+                    }
                 }
+                Console.WriteLine();
             }
         }
 
@@ -151,6 +167,7 @@ namespace BirthClinicPlanning
                     }
                 }
             }
+            Console.WriteLine();
         }
 
         public void ShowCliniciansAssignedBirths(int birthId)
@@ -170,14 +187,12 @@ namespace BirthClinicPlanning
                 {
                     Console.WriteLine($"Medarbejder id: {works.Clinicians.EmployeeId} " +
                                       $"\nNavn: {works.Clinicians.FullName} " +
-                                      $"\nTitle: {works.Clinicians.Title}");
+                                      $"\nPosition: {works.Clinicians.Position}");
+                    
                 }
             }
-        }
 
-        public void CloseProgram()
-        {
-            Environment.Exit(0);
+            Console.WriteLine();
         }
     }
 }
