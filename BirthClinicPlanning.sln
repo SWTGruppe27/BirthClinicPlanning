@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31112.23
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BirthClinicPlanning", "BirthClinicPlanning\BirthClinicPlanning.csproj", "{2B1B9BA8-BEA1-4BAA-804B-B40CAB699797}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BirthClinicPlanning", "BirthClinicPlanning\BirthClinicPlanning.csproj", "{2B1B9BA8-BEA1-4BAA-804B-B40CAB699797}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BirthClinicPlanningConsole", "BirthClinicPlanningConsole\BirthClinicPlanningConsole.csproj", "{D5FA069B-CABA-4CC2-93D2-C29919B11DDF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{2B1B9BA8-BEA1-4BAA-804B-B40CAB699797}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B1B9BA8-BEA1-4BAA-804B-B40CAB699797}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B1B9BA8-BEA1-4BAA-804B-B40CAB699797}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5FA069B-CABA-4CC2-93D2-C29919B11DDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5FA069B-CABA-4CC2-93D2-C29919B11DDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5FA069B-CABA-4CC2-93D2-C29919B11DDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5FA069B-CABA-4CC2-93D2-C29919B11DDF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
