@@ -173,7 +173,7 @@ namespace BirthClinicPlanning.Data
                 restRoom4Hour.RoomNumber = i;
                 restRoom4Hours.Add(restRoom4Hour);
             }
-            mb.Entity<MaternityRoom>().HasData(restRoom4Hours);
+            mb.Entity<RestRoom4Hours>().HasData(restRoom4Hours);
 
             List<BirthRoom> birthRooms = new List<BirthRoom>();
 

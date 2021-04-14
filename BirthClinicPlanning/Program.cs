@@ -35,7 +35,7 @@ namespace BirthClinicPlanning
                 Console.WriteLine("6. Vis klinikere tilkoblet fødsler");
                 Console.WriteLine("7. Marker en fødsel som færdig");
                 Console.WriteLine("8. Annuller en reservation på et rum");
-                Console.WriteLine("9. Opret et nyt rum");
+                Console.WriteLine("9. Opret en ny reservation");
                 Console.WriteLine("10. Luk programmet\n");
 
                 string input = Console.ReadLine();
@@ -85,60 +85,8 @@ namespace BirthClinicPlanning
                         break;
 
                     case 9:
-                        Console.WriteLine(
-                            "Lav en reservation i en af disse rumtyper: \n a: Maternityroom \n b: Restroom (4 hours) \n c: Birthroom \n");
-                        string choice = Console.ReadLine();
-                        bool notTrue = true;
-
-                        int numberOfMaternityRooms = 0;
-                        int numberOfRestRoom4HoursRooms = 0;
-                        int numberOfBirthRoomsRooms = 0;
-
-                        using (BirthClinicPlanningContext numberOfRooms = new BirthClinicPlanningContext())
-                        {
-                            numberOfMaternityRooms = numberOfRooms.MaternityRooms.Count();
-                            numberOfRestRoom4HoursRooms = numberOfRooms.RestRoom4Hours.Count();
-                            numberOfBirthRoomsRooms = numberOfRooms.BirthRooms.Count();
-                        }
-
-                        while (notTrue)
-                        {
-                            switch (choice)
-                            {
-                                case "a":
-                                    Console.WriteLine($"Vælg et id mellem 1 og {numberOfMaternityRooms}:");
-                                    break;
-
-                                case "b":
-                                    Console.WriteLine(
-                                        $"Vælg et id mellem {numberOfMaternityRooms + 1} og {numberOfRestRoom4HoursRooms + numberOfMaternityRooms}:");
-                                    break;
-
-                                case "c":
-                                    Console.WriteLine(
-                                        $"Vælg et id mellem {numberOfMaternityRooms + numberOfRestRoom4HoursRooms + 1} og {numberOfBirthRoomsRooms + numberOfMaternityRooms + numberOfRestRoom4HoursRooms}:");
-                                    break;
-
-                                default:
-                                    notTrue = false;
-                                    break;
-                            }
-                        }
-
-                        int choice1 = int.Parse(Console.ReadLine());
-                        Reservation newReservation = new Reservation();
-                        newReservation.RoomId = choice1;
-                        Console.WriteLine($"Vælg en start dato for din reservation.");
-                        newReservation.ReservationStartDate = ReservationDate();
-
-                        Console.WriteLine($"Vælg en slut dato for din reservation.");
-                        newReservation.ReservationEndDate = ReservationDate();
-
-                        using (BirthClinicPlanningContext makeReservation = new BirthClinicPlanningContext())
-                        {
-                            makeReservation.Add(newReservation);
-                            makeReservation.SaveChanges();
-                        }
+                        Console.WriteLine("Lav en reservation i en af disse rumtyper: \n a: Maternityroom \n b: Restroom (4 hours) \n c: Birthroom \n");
+                        MakeReservation();
                         break;
 
                     case 10:
@@ -241,6 +189,65 @@ namespace BirthClinicPlanning
             }
         }
 
+        static void MakeReservation()
+        {
+            int numberOfMaternityRooms = 0;
+            int numberOfRestRoom4HoursRooms = 0;
+            int numberOfBirthRoomsRooms = 0;
+
+            using (BirthClinicPlanningContext numberOfRooms = new BirthClinicPlanningContext())
+            {
+                numberOfMaternityRooms = numberOfRooms.MaternityRooms.Count();
+                numberOfRestRoom4HoursRooms = numberOfRooms.RestRoom4Hours.Count();
+                numberOfBirthRoomsRooms = numberOfRooms.BirthRooms.Count();
+            }
+
+            bool notTrue = true;
+
+            while (notTrue)
+            {
+                string choice = Console.ReadLine();
+
+                switch (choice)
+                {
+                    case "a":
+                        Console.WriteLine($"Vælg et id mellem 1 og {numberOfMaternityRooms}:");
+                        notTrue = false;
+                        break;
+
+                    case "b":
+                        Console.WriteLine(
+                            $"Vælg et id mellem {numberOfMaternityRooms + 1} og {numberOfRestRoom4HoursRooms + numberOfMaternityRooms}:");
+                        notTrue = false;
+                        break;
+
+                    case "c":
+                        Console.WriteLine(
+                            $"Vælg et id mellem {numberOfMaternityRooms + numberOfRestRoom4HoursRooms + 1} og {numberOfBirthRoomsRooms + numberOfMaternityRooms + numberOfRestRoom4HoursRooms}:");
+                        notTrue = false;
+                        break;
+
+                    default:
+                        Console.WriteLine($"Vælg et gyldigt bogstav");
+                        break;
+                }
+            }
+
+            int choice1 = int.Parse(Console.ReadLine());
+            Reservation newReservation = new Reservation();
+            newReservation.RoomId = choice1;
+            Console.WriteLine($"Vælg en start dato for din reservation.");
+            newReservation.ReservationStartDate = ReservationDate();
+
+            Console.WriteLine($"Vælg en slut dato for din reservation.");
+            newReservation.ReservationEndDate = ReservationDate();
+
+            using (BirthClinicPlanningContext makeReservation = new BirthClinicPlanningContext())
+            {
+                makeReservation.Add(newReservation);
+                makeReservation.SaveChanges();
+            }
+        }
         static DateTime ReservationDate()
         {
             Console.Write("Vælg en måned: ");
@@ -252,7 +259,7 @@ namespace BirthClinicPlanning
 
             Console.Write("Vælg et tidspunkt (time): ");
             int time = int.Parse(Console.ReadLine());
-            Console.Write("Vælg et tidspunkt (minutter):: ");
+            Console.Write("Vælg et tidspunkt (minutter): ");
             int minuts = int.Parse(Console.ReadLine());
             DateTime inputtedDate = new DateTime(year, month, day, time, minuts, 0);
 
