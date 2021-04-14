@@ -12,7 +12,6 @@ namespace BirthClinicPlanning
     {
         static void Main(string[] args)
         {
-
             //AddData();
 
             BirthClinicPlanningContext context = new BirthClinicPlanningContext();
